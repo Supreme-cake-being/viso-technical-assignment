@@ -18,7 +18,7 @@ export const useRefresh = async (token: RequestCookie | undefined) => {
         withCredentials: true,
       }
     );
-    console.log(response.data);
+    
     return response.data;
   } catch (error) {
     console.log(error);

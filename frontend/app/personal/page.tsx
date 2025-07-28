@@ -1,5 +1,5 @@
-import { Recipes } from "@/src/components/Recipes";
-import { useRecipes } from "@/src/hooks/recipes/useRecipes";
+import { PersonalRecipes } from "@/src/components/PersonalRecipes";
+import { usePersonalRecipes } from "@/src/hooks/recipes/usePersonalRecipes";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -11,7 +11,7 @@ export default async function Home() {
     redirect("/login");
   }
 
-  const recipes = await useRecipes();
+  const recipes = await usePersonalRecipes();
 
-  return <Recipes recipes={recipes} />;
+  return <PersonalRecipes recipes={recipes} />;
 }
