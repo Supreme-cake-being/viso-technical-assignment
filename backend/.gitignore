@@ -28,5 +28,6 @@ next-env.d.ts
 # editor config
 .idea/
 
-# drizzle migrations
-src/drizzle/migrations/*
+# prisma migrations
+/src/generated
+/src/prisma/migrations
