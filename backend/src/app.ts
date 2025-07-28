@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import authRouter from 'routes/authRouter';
+import recipeRouter from 'routes/recipeRouter';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(
 app.use(express.json());
 
 app.use('/api/users', authRouter);
+app.use('/api/recipes', recipeRouter);
 
 app.get('/api/ping', async (_req: express.Request, res: express.Response) => {
   res.status(200).send('pong');

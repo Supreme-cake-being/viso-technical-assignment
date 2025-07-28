@@ -1,7 +1,11 @@
 import express from 'express';
 import authController from 'controllers/authController';
-import { isEmptyBody, isAuthenticated } from 'middlewares';
-import { loginValidation, signupValidation } from 'middlewares/validations';
+import {
+  isEmptyBody,
+  isAuthenticated,
+  loginValidation,
+  signupValidation,
+} from 'middlewares';
 
 const authRouter = express.Router();
 
