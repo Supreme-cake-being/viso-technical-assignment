@@ -1,10 +1,8 @@
 import { ctrlWrapper } from 'decorators';
-import { db } from 'drizzle';
-import { eq } from 'drizzle-orm';
-import { users } from 'drizzle/schema';
 import { RequestHandler } from 'express';
 import { HttpError } from 'helpers';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import prisma from 'prisma/prismaClient';
 
 const isAuthenticatedMiddleware: RequestHandler = async (req, _, next) => {
   const { authorization = '' } = req.headers;
@@ -20,7 +18,9 @@ const isAuthenticatedMiddleware: RequestHandler = async (req, _, next) => {
       process.env.JWT_SECRET as string
     ) as JwtPayload;
 
-    const [user] = await db.select().from(users).where(eq(users.id, id));
+    const user = await prisma.user.findUnique({
+      where: { id: id },
+    });
     if (!user) {
       throw HttpError(401, 'Not authorized');
     }
