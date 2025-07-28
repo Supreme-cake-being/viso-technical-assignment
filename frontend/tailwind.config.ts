@@ -5,7 +5,8 @@ const config = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./app/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@heroui/react/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {

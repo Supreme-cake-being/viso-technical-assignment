@@ -1,5 +1,7 @@
 import { HeroUIProvider } from "@heroui/react";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { useRefresh } from "@/src/hooks/auth/useRefresh";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
@@ -7,11 +9,16 @@ export const metadata: Metadata = {
   description: "A web application that helps users discover and manage recipes",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const userToken = cookieStore.get("token");
+
+  const currentUser = await useRefresh(userToken);
+
   return (
     <html lang="en">
       <body>
